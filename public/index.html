@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div>
+          <div class="brand">MoneyFlow</div>
+          <nav class="nav">
+            <button class="nav-item active">Dashboard</button>
+            <button class="nav-item">Transactions</button>
+            <button class="nav-item">Budgets</button>
+          </nav>
+        </div>
+
+        <div class="quick-stats">
+          <div class="mini-card">
+            <span>Current Balance</span>
+            <strong id="balance-display">$0.00</strong>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Overview</p>
+            <h1>Personal Finance Dashboard</h1>
+          </div>
+          <button class="primary-button" id="reset-data">Reset Demo Data</button>
+        </header>
+
+        <section class="stats-grid">
+          <article class="stat-card income">
+            <span>Total Income</span>
+            <strong id="income-total">$0.00</strong>
+          </article>
+          <article class="stat-card expenses">
+            <span>Total Expenses</span>
+            <strong id="expense-total">$0.00</strong>
+          </article>
+          <article class="stat-card balance">
+            <span>Net Balance</span>
+            <strong id="net-balance">$0.00</strong>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel transaction-panel">
+            <div class="panel-header">
+              <h2>Add Transaction</h2>
+            </div>
+
+            <form id="transaction-form">
+              <div class="field-row">
+                <label>
+                  <span>Type</span>
+                  <select id="transaction-type" required>
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span>Category</span>
+                  <select id="transaction-category" required>
+                    <option value="Food">Food</option>
+                    <option value="Housing">Housing</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Health">Health</option>
+                    <option value="Salary">Salary</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label>
+                  <span>Amount</span>
+                  <input id="transaction-amount" type="number" min="0.01" step="0.01" placeholder="0.00" required />
+                </label>
+
+                <label>
+                  <span>Date</span>
+                  <input id="transaction-date" type="date" required />
+                </label>
+              </div>
+
+              <label>
+                <span>Note</span>
+                <input id="transaction-note" type="text" placeholder="Optional note" />
+              </label>
+
+              <button type="submit" class="primary-button wide">Add Entry</button>
+            </form>
+          </div>
+
+          <div class="panel budgets-panel">
+            <div class="panel-header">
+              <h2>Budget Overview</h2>
+            </div>
+            <div id="budget-list" class="budget-list"></div>
+          </div>
+        </section>
+
+        <section class="panel lower-panel">
+          <div class="panel-header">
+            <h2>Recent Transactions</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Category</th>
+                  <th>Note</th>
+                  <th>Amount</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="transaction-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
